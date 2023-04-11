@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace DotNetAutomationBinding
@@ -34,8 +34,15 @@ namespace DotNetAutomationBinding
         {
             Part partpart = null;
 
+            int guid = DotNet_automationapi_Session_MakePart(pathName);
+            if (guid == 0)
+            {
+                throw new Exception("Failed to create part.");
+            }
 
             return partpart;
+            Part part = new Part(guid);
+            return part;
         }
 
     }
